@@ -1,4 +1,4 @@
-package org.example.Accounts;
+package org.example.bankAccounts;
 
 import org.example.people.BaseHuman;
 

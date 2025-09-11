@@ -4,11 +4,8 @@ import org.example.people.BaseHuman;
 
 public class BaseAccount {
     private String uuid;
-
     private double balance;
-
     private String accountNumber;
-
     private BaseHuman owner;
 
     public BaseAccount(String uuid, double balance, String accountNumber, BaseHuman owner) {
