@@ -1,14 +1,14 @@
 package org.example.bankAccounts;
 
-import org.example.people.BaseHuman;
+import org.example.people.BasePerson;
 
-public class BaseAccount {
+public class BaseBankAccount {
     private String uuid;
     private double balance;
     private String accountNumber;
-    private BaseHuman owner;
+    private BasePerson owner;
 
-    public BaseAccount(String uuid, double balance, String accountNumber, BaseHuman owner) {
+    public BaseBankAccount(String uuid, double balance, String accountNumber, BasePerson owner) {
         this.uuid = uuid;
         this.balance = balance;
         this.accountNumber = accountNumber;
@@ -27,7 +27,7 @@ public class BaseAccount {
         return accountNumber;
     }
 
-    public BaseHuman getOwner() {
+    public BasePerson getOwner() {
         return owner;
     }
 
@@ -35,10 +35,9 @@ public class BaseAccount {
         this.balance += balance;
     }
 
-    public void DecreaseBalance(double balance) {
-        if(this.balance - balance < 0) {
-            throw new IllegalArgumentException("Balance cannot be negative");
+    public void ReduceBalance(double balance) {
+        if(this.balance >= balance) {
+            this.balance -= balance;
         }
-        this.balance -= balance;
     }
 }

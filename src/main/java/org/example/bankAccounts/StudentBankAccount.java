@@ -1,14 +1,18 @@
 package org.example.bankAccounts;
 
-import org.example.people.BaseHuman;
-import org.example.people.Student;
+import org.example.people.BasePerson;
+import org.example.people.StudentPerson;
 
-public class StudentBankAccount extends BaseAccount{
+public class StudentBankAccount extends BaseBankAccount {
 
-    String school;
+    private String school;
 
-    public StudentBankAccount(String uuid, double balance, String accountNumber, Student owner) {
-        super(uuid, balance, accountNumber, (BaseHuman)owner);
-        this.school = owner.GetSchool();
+    public StudentBankAccount(String uuid, double balance, String accountNumber, StudentPerson owner) {
+        super(uuid, balance, accountNumber, owner);
+        this.school = owner.getSchool(); // getter z studentPerson
+    }
+
+    public String getSchool() {
+        return school;
     }
 }

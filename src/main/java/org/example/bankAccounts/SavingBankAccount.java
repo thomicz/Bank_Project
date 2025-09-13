@@ -1,11 +1,12 @@
 package org.example.bankAccounts;
 
-import org.example.people.BaseHuman;
+import org.example.people.BasePerson;
 
-public class SavingBankAccount extends BaseAccount {
+public class SavingBankAccount extends BaseBankAccount{
+
     double interestRate;
 
-    public SavingBankAccount(String uuid, double balance, String accountNumber, BaseHuman owner, double interestRate) {
+    public SavingBankAccount(String uuid, double balance, String accountNumber, BasePerson owner, double interestRate) {
         super(uuid, balance, accountNumber, owner);
         this.interestRate = interestRate;
     }

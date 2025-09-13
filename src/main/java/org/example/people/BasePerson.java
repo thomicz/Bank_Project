@@ -1,11 +1,11 @@
 package org.example.people;
 
-public class BaseHuman {
+public class BasePerson {
     private String uuid;
     private String firstName;
     private String lastName;
 
-    public BaseHuman(String uuid, String firstName, String lastName) {
+    public BasePerson(String uuid, String firstName, String lastName) {
         this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;
