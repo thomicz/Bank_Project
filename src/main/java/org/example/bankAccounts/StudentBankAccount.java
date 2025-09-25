@@ -5,14 +5,14 @@ import org.example.people.StudentPerson;
 
 public class StudentBankAccount extends BaseBankAccount {
 
-    private String school;
+    private final String schoolName;
 
-    public StudentBankAccount(String uuid, double balance, String accountNumber, StudentPerson owner) {
+    public StudentBankAccount(String uuid, double balance, int accountNumber, StudentPerson owner) {
         super(uuid, balance, accountNumber, owner);
-        this.school = owner.getSchool(); // getter z studentPerson
+        this.schoolName = owner.getSchool(); // getter z studentPerson
     }
 
     public String getSchool() {
-        return school;
+        return schoolName;
     }
 }

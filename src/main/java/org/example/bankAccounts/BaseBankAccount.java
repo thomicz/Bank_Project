@@ -5,10 +5,10 @@ import org.example.people.BasePerson;
 public class BaseBankAccount {
     private String uuid;
     private double balance;
-    private String accountNumber;
+    private int accountNumber;
     private BasePerson owner;
 
-    public BaseBankAccount(String uuid, double balance, String accountNumber, BasePerson owner) {
+    public BaseBankAccount(String uuid, double balance, int accountNumber, BasePerson owner) {
         this.uuid = uuid;
         this.balance = balance;
         this.accountNumber = accountNumber;
@@ -23,7 +23,7 @@ public class BaseBankAccount {
         return balance;
     }
 
-    public String getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
