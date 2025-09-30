@@ -18,6 +18,7 @@ public class Main {
         BasePerson tomas = new BasePerson("p1", "Tomáš", "Dvořák");
         //SavingBankAccount tomasAccount = new SavingBankAccount("a1", 1000, generator.generateRandomAccountNumber(), tomas, 0.05);
 
+
         //NormalPerson normal = new NormalPerson("p2", "Jan", "Novák", tomasAccount);
 
         //Výpis normálního člověka
