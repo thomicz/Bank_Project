@@ -1,43 +1,41 @@
 package org.example.bankAccounts;
 
-import org.example.people.BasePerson;
+import org.example.customers.Customer;
 
 public class BaseBankAccount {
-    private String uuid;
-    private double balance;
-    private int accountNumber;
-    private BasePerson owner;
 
-    public BaseBankAccount(String uuid, double balance, int accountNumber, BasePerson owner) {
+    private final String uuid;
+
+    private final String bankAccountNumber;
+
+    private final Customer customer;
+
+    private double balance;
+
+    public BaseBankAccount(String uuid, String bankAccountNumber, Customer customer, double balance) {
         this.uuid = uuid;
+        this.bankAccountNumber = bankAccountNumber;
+        this.customer = customer;
         this.balance = balance;
-        this.accountNumber = accountNumber;
-        this.owner = owner;
     }
 
     public String getUuid() {
         return uuid;
     }
 
+    public String getBankAccountNumber() {
+        return bankAccountNumber;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
     public double getBalance() {
         return balance;
     }
 
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public BasePerson getOwner() {
-        return owner;
-    }
-
-    public void AddBalance(double balance) {
-        this.balance += balance;
-    }
-
-    public void ReduceBalance(double balance) {
-        if(this.balance >= balance) {
-            this.balance -= balance;
-        }
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }
