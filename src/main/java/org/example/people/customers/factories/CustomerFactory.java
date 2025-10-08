@@ -1,6 +1,6 @@
-package org.example.customers.factories;
+package org.example.people.customers.factories;
 
-import org.example.customers.Customer;
+import org.example.people.customers.Customer;
 
 public class CustomerFactory {
     public Customer createCustomer(String uuid, String firstName, String lastName) {

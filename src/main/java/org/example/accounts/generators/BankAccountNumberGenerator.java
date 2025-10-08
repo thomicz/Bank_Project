@@ -1,4 +1,4 @@
-package org.example.bankAccounts.generators;
+package org.example.accounts.generators;
 
 import java.util.Random;
 

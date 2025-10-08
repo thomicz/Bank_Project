@@ -1,7 +1,6 @@
-package org.example.bankAccounts.services;
+package org.example.accounts.services;
 
-import org.example.bankAccounts.BaseBankAccount;
-import org.example.bankAccounts.services.AML;
+import org.example.accounts.BaseBankAccount;
 
 public class BankAccountService {
 

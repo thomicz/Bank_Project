@@ -1,11 +1,14 @@
-package org.example.people;
+package org.example.people.customers;
 
-public class BasePerson {
-    private String uuid;
-    private String firstName;
-    private String lastName;
+public class Customer {
 
-    public BasePerson(String uuid, String firstName, String lastName) {
+    private final String uuid;
+
+    private final String firstName;
+
+    private final String lastName;
+
+    public Customer(String uuid, String firstName, String lastName) {
         this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -14,9 +17,11 @@ public class BasePerson {
     public String getUuid() {
         return uuid;
     }
+
     public String getFirstName() {
         return firstName;
     }
+
     public String getLastName() {
         return lastName;
     }

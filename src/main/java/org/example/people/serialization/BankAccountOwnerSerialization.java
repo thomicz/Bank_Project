@@ -1,14 +1,13 @@
-package org.example.customers;
+package org.example.people.serialization;
 
-public class Customer {
+public class BankAccountOwnerSerialization {
+    public String uuid;
 
-    private final String uuid;
+    public String firstName;
 
-    private final String firstName;
+    public String lastName;
 
-    private final String lastName;
-
-    public Customer(String uuid, String firstName, String lastName) {
+    public BankAccountOwnerSerialization(String uuid, String firstName, String lastName) {
         this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;

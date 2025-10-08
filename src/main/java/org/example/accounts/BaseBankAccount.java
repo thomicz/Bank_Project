@@ -1,6 +1,6 @@
-package org.example.bankAccounts;
+package org.example.accounts;
 
-import org.example.customers.Customer;
+import org.example.people.customers.Customer;
 
 public class BaseBankAccount {
 
