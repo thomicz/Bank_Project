@@ -10,7 +10,7 @@ import java.util.Map;
 public class BankAccountWithPaymentCards extends BaseBankAccount{
 
     protected final List<PaymentCard> paymentCards;
-    protected final Map<String, PaymentCard> paymentCardsMap;
+    public final Map<String, PaymentCard> paymentCardsMap;
 
     public BankAccountWithPaymentCards(String uuid, String bankAccountNumber, Customer customer, double balance) {
         super(uuid, bankAccountNumber, customer, balance);
