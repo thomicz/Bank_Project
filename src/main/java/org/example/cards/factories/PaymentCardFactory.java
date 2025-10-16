@@ -1,10 +1,12 @@
-package org.example.cards;
+package org.example.cards.factories;
+import org.example.cards.*;
+
 import java.util.UUID;
 
 public class PaymentCardFactory {
     private final PaymentCardNumberGenerator paymentCardNumberGenerator = new PaymentCardNumberGenerator();
     private final PaymentCardCvvGenerator paymentCardCvvGenerator = new PaymentCardCvvGenerator();
-    private final PaymentCardPinGenerator  paymentCardPinGenerator = new PaymentCardPinGenerator();
+    private final PaymentCardPinGenerator paymentCardPinGenerator = new PaymentCardPinGenerator();
     private final PaymentCardExpirationCalculator paymentCardExpirationCalculator = new PaymentCardExpirationCalculator();
 
     public PaymentCard create() {

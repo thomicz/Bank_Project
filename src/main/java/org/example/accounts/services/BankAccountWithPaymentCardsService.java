@@ -33,8 +33,8 @@ public class BankAccountWithPaymentCardsService extends BankAccountService {
         }
 
         account.setBalance(account.getBalance() - amount);
-        System.out.println("Platba " + amount + " Kč byla provedena kartou " + cardNumber +
-                " z účtu " + account.getBankAccountNumber());
+        System.out.println("Platba " + amount + " Kc byla provedena kartou " + cardNumber +
+                " z uctu " + account.getBankAccountNumber());
     }
 
     private BankAccountWithPaymentCards findAccountByCardNumber(String cardNumber) {
