@@ -24,14 +24,29 @@ public class Main {
         BankAccountWithPaymentCards acc2 = new BankAccountWithPaymentCards("uuid2", "987-654", customer_2, 3000);
 
         acc1.addPaymentCard(new PaymentCard("123", "4567897654", "123", "9865", "12", "12"));
+        acc1.addPaymentCard(new PaymentCard("123", "4567897655", "123", "9865", "12", "12"));
+
+        acc2.addPaymentCard(new PaymentCard("123", "4567897656", "123", "9865", "12", "12"));
+        acc2.addPaymentCard(new PaymentCard("123", "4567897657", "123", "9865", "12", "12"));
+
 
         service.addAccount(acc1);
         service.addAccount(acc2);
 
-// vyzkoušíme platbu
         System.out.println(acc1.getBalance());
         service.pay("4567897654", 500);
         System.out.println(acc1.getBalance());
+        service.pay("4567897655", 1000);
+        System.out.println(acc1.getBalance());
+
+        System.out.println(acc2.getBalance());
+        service.pay("4567897656", 500);
+        System.out.println(acc1.getBalance());
+        service.pay("4567897657", 1000);
+        System.out.println(acc1.getBalance());
+
+
+
 
 
 

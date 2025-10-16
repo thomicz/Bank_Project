@@ -9,12 +9,10 @@ public class BankAccountWithPaymentCardsService extends BankAccountService {
 
     private final List<BankAccountWithPaymentCards> accounts = new ArrayList<>();
 
-    // přidání účtu do evidence
     public void addAccount(BankAccountWithPaymentCards account) {
         accounts.add(account);
     }
 
-    // provedení platby na základě čísla karty
     public void pay(String cardNumber, double amount) {
         BankAccountWithPaymentCards account = findAccountByCardNumber(cardNumber);
 
@@ -34,13 +32,11 @@ public class BankAccountWithPaymentCardsService extends BankAccountService {
             return;
         }
 
-        // provedení platby
         account.setBalance(account.getBalance() - amount);
-        System.out.println("✅ Platba " + amount + " Kč byla provedena kartou " + cardNumber +
+        System.out.println("Platba " + amount + " Kč byla provedena kartou " + cardNumber +
                 " z účtu " + account.getBankAccountNumber());
     }
 
-    // najde účet podle čísla karty
     private BankAccountWithPaymentCards findAccountByCardNumber(String cardNumber) {
         for (BankAccountWithPaymentCards account : accounts) {
             if (account.paymentCardsMap.containsKey(cardNumber)) {
