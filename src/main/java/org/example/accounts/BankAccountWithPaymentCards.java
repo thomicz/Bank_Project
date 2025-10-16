@@ -1,7 +1,7 @@
 package org.example.accounts;
 
 import org.example.cards.PaymentCard;
-import org.example.people.customers.Customer;
+import org.example.people.Customer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;

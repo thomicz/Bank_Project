@@ -1,4 +1,4 @@
-package org.example.people.customers;
+package org.example.people;
 
 public class Customer {
 

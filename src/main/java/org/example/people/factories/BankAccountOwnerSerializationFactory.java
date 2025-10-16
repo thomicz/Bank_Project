@@ -1,6 +1,7 @@
-package org.example.people.serialization;
+package org.example.people.factories;
 
-import org.example.people.customers.Customer;
+import org.example.people.Customer;
+import org.example.people.serialization.BankAccountOwnerSerialization;
 
 public class BankAccountOwnerSerializationFactory {
 

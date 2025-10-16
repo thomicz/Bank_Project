@@ -4,8 +4,8 @@ import org.example.accounts.factories.BankAccountFactory;
 import org.example.accounts.generators.BankAccountNumberGenerator;
 import org.example.cards.PaymentCard;
 import org.example.cards.factories.PaymentCardFactory;
-import org.example.people.customers.factories.CustomerFactory;
-import org.example.people.customers.Customer;
+import org.example.people.factories.CustomerFactory;
+import org.example.people.Customer;
 import org.example.accounts.BankAccountWithPaymentCards;
 import org.example.accounts.services.BankAccountWithPaymentCardsService;
 

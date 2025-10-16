@@ -1,4 +1,4 @@
-package org.example.cards;
+package org.example.cards.generators;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -1,7 +1,6 @@
 package org.example.accounts;
 
-import org.example.cards.PaymentCard;
-import org.example.people.customers.Customer;
+import org.example.people.Customer;
 
 public class NormalBankAccount extends BankAccountWithPaymentCards {
     public NormalBankAccount(String uuid, String bankAccountNumber, Customer customer) {

@@ -4,7 +4,7 @@ import org.example.accounts.NormalBankAccount;
 import org.example.accounts.SavingBankAccount;
 import org.example.accounts.StudentBankAccount;
 import org.example.accounts.generators.BankAccountNumberGenerator;
-import org.example.people.customers.Customer;
+import org.example.people.Customer;
 
 public class BankAccountFactory {
 
@@ -35,5 +35,4 @@ public class BankAccountFactory {
                 schoolName
         );
     }
-
 }

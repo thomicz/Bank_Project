@@ -1,7 +1,7 @@
 package org.example.people.serialization;
 
 import com.google.gson.Gson;
-import org.example.people.customers.Customer;
+import org.example.people.factories.BankAccountOwnerSerializationFactory;
 
 public class BankAccountOwnerSerializationService {
 
