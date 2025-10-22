@@ -2,12 +2,17 @@ package org.example.accounts.services;
 
 import org.example.accounts.BankAccountWithPaymentCards;
 import org.example.cards.PaymentCard;
+import org.example.cards.factories.PaymentCardFactory;
+import org.example.logger.PaymentLogger;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class BankAccountWithPaymentCardsService extends BankAccountService {
 
     private final List<BankAccountWithPaymentCards> accounts = new ArrayList<>();
+    PaymentLogger paymentLogger = new PaymentLogger();
 
     public void addAccount(BankAccountWithPaymentCards account) {
         accounts.add(account);
@@ -33,8 +38,7 @@ public class BankAccountWithPaymentCardsService extends BankAccountService {
         }
 
         account.setBalance(account.getBalance() - amount);
-        System.out.println("Platba " + amount + " Kc byla provedena kartou " + cardNumber +
-                " z uctu " + account.getBankAccountNumber());
+        paymentLogger.logPayment(amount, cardNumber, account.getBalance());
     }
 
     private BankAccountWithPaymentCards findAccountByCardNumber(String cardNumber) {
