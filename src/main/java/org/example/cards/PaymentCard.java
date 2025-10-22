@@ -47,6 +47,13 @@ public class PaymentCard {
         return expireYear;
     }
 
+    public void information()
+    {
+        System.out.println("Card Number: " + cardNumber);
+        System.out.println("CVV: " + cvv);
+        System.out.println("Pin: " + pin);
+        System.out.println("Expire: " + expireMonth + "/" +  expireYear);
+    }
 
 
 }

@@ -62,6 +62,9 @@ public class Main {
         bankAccountWithPaymentCardsService.pay(card_4.getCardNumber(), 1000);
         System.out.println("Na 2. uctu je: " + account_2.getBalance() + "Kc");
         System.out.println("---------------------------------------------------------------------");
+        card_1.information();
+        System.out.println("---------------------------------------------------------------------");
+
 
     }
 }
