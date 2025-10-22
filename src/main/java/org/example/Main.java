@@ -14,7 +14,6 @@ public class Main {
 
         BankAccountNumberGenerator generator = new BankAccountNumberGenerator();
         CustomerFactory customerFactory = new CustomerFactory();
-        BankAccountFactory bankAccountFactory = new BankAccountFactory();
         PaymentCardFactory paymentCardFactory = new PaymentCardFactory();
         BankAccountWithPaymentCardsService bankAccountWithPaymentCardsService = new BankAccountWithPaymentCardsService();
 
