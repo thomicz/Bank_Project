@@ -1,5 +1,6 @@
 package org.example.accounts.factories;
 
+import com.google.inject.Singleton;
 import org.example.accounts.NormalBankAccount;
 import org.example.accounts.SavingBankAccount;
 import org.example.accounts.StudentBankAccount;
