@@ -1,36 +1,41 @@
 package org.example.cards.factories;
+
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.example.cards.*;
-import org.example.cards.generators.PaymentCardCvvGenerator;
-import org.example.cards.generators.PaymentCardExpirationCalculator;
-import org.example.cards.generators.PaymentCardNumberGenerator;
-import org.example.cards.generators.PaymentCardPinGenerator;
+import org.example.cards.generators.*;
 
 import java.util.UUID;
 
 @Singleton
 public class PaymentCardFactory {
 
+    private final PaymentCardNumberGenerator paymentCardNumberGenerator;
+    private final PaymentCardCvvGenerator paymentCardCvvGenerator;
+    private final PaymentCardPinGenerator paymentCardPinGenerator;
+    private final PaymentCardExpirationCalculator paymentCardExpirationCalculator;
+
     @Inject
-    private final PaymentCardNumberGenerator paymentCardNumberGenerator = new PaymentCardNumberGenerator();
-    @Inject
-    private final PaymentCardCvvGenerator paymentCardCvvGenerator = new PaymentCardCvvGenerator();
-    @Inject
-    private final PaymentCardPinGenerator paymentCardPinGenerator = new PaymentCardPinGenerator();
-    @Inject
-    private final PaymentCardExpirationCalculator paymentCardExpirationCalculator = new PaymentCardExpirationCalculator();
+    public PaymentCardFactory(
+            PaymentCardNumberGenerator paymentCardNumberGenerator,
+            PaymentCardCvvGenerator paymentCardCvvGenerator,
+            PaymentCardPinGenerator paymentCardPinGenerator,
+            PaymentCardExpirationCalculator paymentCardExpirationCalculator
+    ) {
+        this.paymentCardNumberGenerator = paymentCardNumberGenerator;
+        this.paymentCardCvvGenerator = paymentCardCvvGenerator;
+        this.paymentCardPinGenerator = paymentCardPinGenerator;
+        this.paymentCardExpirationCalculator = paymentCardExpirationCalculator;
+    }
 
     public PaymentCard create() {
-
         String uuid = UUID.randomUUID().toString();
-        String cardNUmber = this.paymentCardNumberGenerator.generateCardNumber();
+        String cardNumber = this.paymentCardNumberGenerator.generateCardNumber();
         String cvv = this.paymentCardCvvGenerator.generateCvv();
         String pin = this.paymentCardPinGenerator.generatePin();
         String expireMonth = this.paymentCardExpirationCalculator.calculateMonthExpire();
         String expireYear = this.paymentCardExpirationCalculator.calculateYearExpire();
 
-        return new PaymentCard(uuid, cardNUmber, cvv, pin, expireMonth, expireYear);
+        return new PaymentCard(uuid, cardNumber, cvv, pin, expireMonth, expireYear);
     }
-
 }
