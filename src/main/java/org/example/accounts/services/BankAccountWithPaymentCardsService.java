@@ -4,6 +4,7 @@ import org.example.accounts.BankAccountWithPaymentCards;
 import org.example.cards.PaymentCard;
 import org.example.cards.factories.PaymentCardFactory;
 import org.example.logger.PaymentLogger;
+import org.example.transaction.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,9 @@ public class BankAccountWithPaymentCardsService extends BankAccountService {
     }
 
     public void pay(String cardNumber, double amount) {
+        Transaction t =  new Transaction("6. 11.", findAccountByCardNumber(cardNumber).getBankAccountNumber().toString(), "", amount);
+
+
         BankAccountWithPaymentCards account = findAccountByCardNumber(cardNumber);
 
         if (account == null) {
@@ -41,6 +45,8 @@ public class BankAccountWithPaymentCardsService extends BankAccountService {
         paymentLogger.logPayment(amount, cardNumber, account.getBalance());
     }
 
+
+
     private BankAccountWithPaymentCards findAccountByCardNumber(String cardNumber) {
         for (BankAccountWithPaymentCards account : accounts) {
             if (account.paymentCardsMap.containsKey(cardNumber)) {
@@ -49,4 +55,6 @@ public class BankAccountWithPaymentCardsService extends BankAccountService {
         }
         return null;
     }
+
+
 }

@@ -5,6 +5,7 @@ import com.google.inject.Injector;
 import org.example.accounts.BankAccountWithPaymentCards;
 import org.example.accounts.generators.BankAccountNumberGenerator;
 import org.example.accounts.services.BankAccountWithPaymentCardsService;
+import org.example.accounts.services.CronService;
 import org.example.cards.PaymentCard;
 import org.example.cards.factories.PaymentCardFactory;
 import org.example.people.Customer;
@@ -68,5 +69,8 @@ public class App {
         // Info o kartě
         card_1.information();
         System.out.println("---------------------------------------------------------------------");
+
+        CronService cron = new CronService();
+        cron.start();
     }
 }

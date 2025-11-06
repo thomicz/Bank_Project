@@ -25,6 +25,7 @@ public class CronService {
     private void applyInterest() {
         System.out.println("Úročení účtů probíhá...");
         countInterestService.countInterest(100000, 0.01);
+
     }
 
     public static void main(String[] args) {
