@@ -13,7 +13,7 @@ public class CronService {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
         scheduler.scheduleAtFixedRate(() -> {
-            System.out.println("Cron: každou minutu");
+            System.out.println("Minuta uběhla...");
 
             minuteCounter++;
             if (minuteCounter % 5 == 0) {
