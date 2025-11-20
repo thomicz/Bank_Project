@@ -1,76 +1,70 @@
 package org.example;
+import com.google.inject.Singleton;
+import jakarta.inject.Inject;
+import org.example.accounts.*;
+import org.example.cards.PaymentCardFactory;
+import org.example.factories.BankAccountFactorie;
+import org.example.fasada.SavingBankAccountinterstCalc;
+import org.example.people.BaseHuman;
+import org.example.people.Student;
+import org.example.storages.AccountStorage;
+import org.example.seriliatition.AccountOwnerJsonSeriliazeService;
+import org.example.services.*;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import org.example.accounts.BankAccountWithPaymentCards;
-import org.example.accounts.generators.BankAccountNumberGenerator;
-import org.example.accounts.services.BankAccountWithPaymentCardsService;
-import org.example.accounts.services.CronService;
-import org.example.cards.PaymentCard;
-import org.example.cards.factories.PaymentCardFactory;
-import org.example.people.Customer;
-import org.example.people.factories.CustomerFactory;
-
+@Singleton
 public class App {
+    @Inject
+    PaymentCardFactory paymentCardFactory;
 
-    public static void run(String[] args) {
-        // Inicializace Guice
-        Injector injector = Guice.createInjector(new Container());
+    @Inject
+    BankAccountFactorie bankAccountFactorie;
+    @Inject
+    Balancemanager balancemanager;
+    @Inject
+    AccountOwnerJsonSeriliazeService accountOwnerJsonSeriliazeService;
+    @Inject
+    Logger logger;
+    @Inject
+    AccountStorage accountStorage;
+    @Inject
+    SavingBankAccountinterstCalc savingBankAccountinterstCalc;
+    @Inject
+    CronIntrest cronIntrest;
+    @Inject
+    IntrestCalc intrestCalc;
+    @Inject
+    IntrestNextMonthDate intrestNextMonthDate;
+    @Inject
+    CronTransactionDetails cronTransactionDetails;
+    public void run()
+    {
 
-        // Získání instancí z injector
-        BankAccountNumberGenerator generator = injector.getInstance(BankAccountNumberGenerator.class);
-        CustomerFactory customerFactory = injector.getInstance(CustomerFactory.class);
-        PaymentCardFactory paymentCardFactory = injector.getInstance(PaymentCardFactory.class);
-        BankAccountWithPaymentCardsService bankAccountWithPaymentCardsService = injector.getInstance(BankAccountWithPaymentCardsService.class);
 
-        // Vytvoření zákazníků
-        Customer customer_1 = customerFactory.createCustomer(generator.generateRandomAccountNumber(), "Tomáš", "Dvořák");
-        Customer customer_2 = customerFactory.createCustomer(generator.generateRandomAccountNumber(), "Honza", "Dvořák");
+        BaseAccount studentskyAccount = new StudentBankAccount("895",1000,String.valueOf(BankAccountNum.generator()), (new Student("76543456","Filip", "Rokos", "Delta")));
+        BaseAccount account = new BaseAccount("7456",1000,String.valueOf(BankAccountNum.generator()),(new BaseHuman("7456","Honza","Va")));
+        BankAccountWithPaymentCard cardAccount = new BankAccountWithPaymentCard("745600",10000,String.valueOf(BankAccountNum.generator()),(new BaseHuman("745600","Vojta","Kaška")));
+        SavingBankAccount save = bankAccountFactorie.createSavingBankAccount("98789",876,(new BaseHuman("98789","vojta","kaška")),3.06);
+        BankAccount acc = bankAccountFactorie.createBankAccount("7456",(new BaseHuman("7456","Honza","Va")),1000);
+        System.out.println("Bank account created");
+        balancemanager.addBalance(acc,1000);
+        BankAccount accc = bankAccountFactorie.createBankAccount("74560",(new BaseHuman("74560","onza","Va")),1000);
+        cronIntrest.start();
+        cronTransactionDetails.start();
+        acc.addPaymentCard(paymentCardFactory.create());
+        if (accountStorage.getAccounts() == null)
+        {
+            System.out.println("Account storage is null");
+        }
+        else {
+            System.out.println(accountStorage.getAccounts().size());
+        }
+        while (true) {
+            try {
+                Thread.sleep(10000); // jen uspíme hlavní vlákno
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
-        // Vytvoření dvou platebních účtů
-        BankAccountWithPaymentCards account_1 = new BankAccountWithPaymentCards("uuid1", "45678764567/0100", customer_1, 5000);
-        BankAccountWithPaymentCards account_2 = new BankAccountWithPaymentCards("uuid2", "98765456566/0100", customer_2, 3000);
-
-        // Vytvoření čtyř platebních karet
-        PaymentCard card_1 = paymentCardFactory.create();
-        PaymentCard card_2 = paymentCardFactory.create();
-        PaymentCard card_3 = paymentCardFactory.create();
-        PaymentCard card_4 = paymentCardFactory.create();
-
-        // Přiřazení karet k účtům
-        account_1.addPaymentCard(card_1);
-        account_1.addPaymentCard(card_2);
-        account_2.addPaymentCard(card_3);
-        account_2.addPaymentCard(card_4);
-
-        // Registrace účtů v servisní třídě
-        bankAccountWithPaymentCardsService.addAccount(account_1);
-        bankAccountWithPaymentCardsService.addAccount(account_2);
-
-        // Test plateb
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("Na 1. účtu je: " + account_1.getBalance() + " Kč");
-        bankAccountWithPaymentCardsService.pay(card_1.getCardNumber(), 500);
-        System.out.println("Na 1. účtu je: " + account_1.getBalance() + " Kč");
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("Na 1. účtu je: " + account_1.getBalance() + " Kč");
-        bankAccountWithPaymentCardsService.pay(card_2.getCardNumber(), 1000);
-        System.out.println("Na 1. účtu je: " + account_1.getBalance() + " Kč");
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("Na 2. účtu je: " + account_2.getBalance() + " Kč");
-        bankAccountWithPaymentCardsService.pay(card_3.getCardNumber(), 500);
-        System.out.println("Na 2. účtu je: " + account_2.getBalance() + " Kč");
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("Na 2. účtu je: " + account_2.getBalance() + " Kč");
-        bankAccountWithPaymentCardsService.pay(card_4.getCardNumber(), 1000);
-        System.out.println("Na 2. účtu je: " + account_2.getBalance() + " Kč");
-        System.out.println("---------------------------------------------------------------------");
-
-        // Info o kartě
-        card_1.information();
-        System.out.println("---------------------------------------------------------------------");
-
-        CronService cron = new CronService();
-        cron.start();
     }
 }

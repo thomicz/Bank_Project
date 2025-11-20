@@ -1,34 +1,28 @@
 package org.example.cards;
 
 public class PaymentCard {
-
-    private String uuid;
-
     private String cardNumber;
-
+    private String uuid;
     private String cvv;
-
     private String pin;
-
     private String expireMonth;
-
     private String expireYear;
 
-    public PaymentCard(String uuid, String cardNumber, String cvv, String pin, String expireMonth, String expireYear) {
-        this.uuid = uuid;
+    public PaymentCard(String cardNumber, String uuid, String cvv, String pin, String expireMonth, String expireYear) {
         this.cardNumber = cardNumber;
+        this.uuid = uuid;
         this.cvv = cvv;
         this.pin = pin;
         this.expireMonth = expireMonth;
         this.expireYear = expireYear;
     }
 
-    public String getUuid() {
-        return uuid;
-    }
-
     public String getCardNumber() {
         return cardNumber;
+    }
+
+    public String getUuid() {
+        return uuid;
     }
 
     public String getCvv() {
@@ -46,14 +40,4 @@ public class PaymentCard {
     public String getExpireYear() {
         return expireYear;
     }
-
-    public void information()
-    {
-        System.out.println("Card Number: " + cardNumber);
-        System.out.println("CVV: " + cvv);
-        System.out.println("Pin: " + pin);
-        System.out.println("Expire: " + expireMonth + "/" +  expireYear);
-    }
-
-
 }

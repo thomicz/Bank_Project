@@ -1,25 +1,34 @@
 package org.example;
 
-import com.google.inject.AbstractModule;
-import org.example.accounts.generators.BankAccountNumberGenerator;
-import org.example.accounts.services.BankAccountWithPaymentCardsService;
-import org.example.cards.factories.PaymentCardFactory;
-import org.example.cards.generators.*;
-import org.example.people.factories.CustomerFactory;
+public class Container {
+    /*public PaymentCardFactory paymentCardFactory;
+    public PaymentCardNumberGenerator paymentCardNumberGenerator;
+    public PaymentCardCvvGenerator paymentCardCvvGenerator;
+    public PaymentCardPinGenerator paymentCardPinGenerator;
+    public PaymentCardExpireDateGenerator paymentCardExpireDateGenerator;
+    public Logger logger;
+    public BankAccountFactorie bankAccountFactorie;
+    public AccountStorage accountStorage;
+    public Balancemanager balancemanager;
+    public AccountOwnerJsonSeriliazeService accountOwnerJsonSeriliazeService;
+    public Container() {
+        this.accountStorage = new AccountStorage();
+        this.accountOwnerJsonSeriliazeService = new AccountOwnerJsonSeriliazeService();
 
-public class Container extends AbstractModule {
-    @Override
-    protected void configure() {
-        // Registrace všech tříd, které bude Guice vytvářet
-        bind(BankAccountNumberGenerator.class);
-        bind(CustomerFactory.class);
-        bind(PaymentCardFactory.class);
-        bind(BankAccountWithPaymentCardsService.class);
+        this.paymentCardNumberGenerator = new PaymentCardNumberGenerator();
 
-        // Generátory, které PaymentCardFactory používá
-        bind(PaymentCardNumberGenerator.class);
-        bind(PaymentCardCvvGenerator.class);
-        bind(PaymentCardPinGenerator.class);
-        bind(PaymentCardExpirationCalculator.class);
+        this.paymentCardCvvGenerator = new PaymentCardCvvGenerator();
+
+        this.paymentCardPinGenerator = new PaymentCardPinGenerator();
+
+        this.paymentCardExpireDateGenerator = new PaymentCardExpireDateGenerator();
+
+        this.paymentCardFactory = new PaymentCardFactory(paymentCardNumberGenerator,paymentCardCvvGenerator,paymentCardPinGenerator,paymentCardExpireDateGenerator);
+
+        this.logger = new Logger();
+
+        this.balancemanager = new Balancemanager();
     }
+*/
+
 }
