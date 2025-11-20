@@ -14,7 +14,7 @@ public class ExportTransactionFile {
         Gson gson = new Gson();
         String date = details.getDate().toString();
         date = date.replace(":", "-");
-        String path = "C:/Users/fifar/IdeaProjects/BankProject/src/main/java/org/example/exports/"+ details.getAccount().GetOwner().getFirstName()+"_"+details.getAccount().GetOwner().getLastName()+date+".json";
+        String path = "C:/Users/Tomáš Dvořák/IdeaProjects/Bank_Project/src/main/java/org/example/exports" + details.getAccount().GetOwner().getFirstName()+"_"+details.getAccount().GetOwner().getLastName()+date+".json";
         TransactionDetailsDTO dto = new TransactionDetailsDTO(details);
 
         try (FileWriter writer = new FileWriter(path)) {
